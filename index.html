@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D Darling Design — Dried Floral Studio</title>
+  <meta name="description" content="Timeless and everlasting dried floral artwork for homes, events, and commercial spaces.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & ROOT ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --deep-green:   #1F3025;
+      --forest:       #2E4435;
+      --sage:         #6E8C65;
+      --light-sage:   #AABFA1;
+      --pale-sage:    #D9E4D2;
+      --chocolate:    #5A3826;
+      --brown:        #7A5040;
+      --warm-tan:     #A87E60;
+      --beige:        #EFE5D6;
+      --cream:        #F6F1E8;
+      --warm-white:   #FBF8F3;
+      --dark:         #151D18;
+      --text:         #342B22;
+      --text-muted:   #796B5E;
+      --rule:         rgba(100, 80, 60, 0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--warm-white);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.6rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, border-color .4s;
+      border-bottom: 1px solid transparent;
+    }
+    #nav.scrolled {
+      background: rgba(251,248,243,.93);
+      backdrop-filter: blur(14px);
+      border-bottom-color: var(--rule);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; }
+    .nav-logo-img {
+      height: 52px; width: auto;
+      filter: brightness(0) invert(1); /* white on dark hero */
+      transition: filter .4s;
+    }
+    #nav.scrolled .nav-logo-img { filter: none; } /* dark green on light nav */
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      font-size: .68rem; font-weight: 300;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(251,248,243,.8); text-decoration: none;
+      transition: color .3s;
+    }
+    #nav.scrolled .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--sage) !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--warm-white); transition: background .4s; }
+    #nav.scrolled .nav-hamburger span { background: var(--text); }
+
+    /* ─── HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      overflow: hidden; display: flex; align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 30%;
+      background: #1F3025; /* fallback colour */
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top,  rgba(15,20,16,.82) 0%, rgba(15,20,16,.35) 45%, rgba(15,20,16,.55) 100%);
+    }
+    .hero-botanical {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 5rem 6rem;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .64rem; font-weight: 300; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--light-sage); margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block; width: 32px; height: 1px;
+      background: var(--sage); vertical-align: middle; margin-right: 1rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 6.5rem); font-weight: 300; line-height: 1.05;
+      color: var(--warm-white); margin-bottom: 2rem;
+    }
+    .hero-title em { font-style: italic; color: var(--beige); }
+    .hero-mission {
+      font-size: .88rem; font-weight: 300; line-height: 2;
+      color: rgba(239,229,214,.65); max-width: 420px; margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 1.2rem;
+      font-size: .68rem; font-weight: 300; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--beige); text-decoration: none; transition: gap .35s;
+    }
+    .hero-cta::after {
+      content: ''; display: block; width: 48px; height: 1px;
+      background: var(--warm-tan); transition: width .35s;
+    }
+    .hero-cta:hover { gap: 1.8rem; }
+    .hero-cta:hover::after { width: 70px; }
+    .hero-scroll {
+      position: absolute; right: 5rem; bottom: 3.5rem; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
+    }
+    .hero-scroll span {
+      font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(239,229,214,.4); writing-mode: vertical-lr;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, rgba(168,126,96,.8), transparent);
+      animation: lineDrop 2.2s ease-in-out infinite;
+    }
+    @keyframes lineDrop {
+      0%   { transform: scaleY(0); transform-origin: top; opacity:1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity:1; }
+      51%  { transform: scaleY(1); transform-origin: bottom; opacity:1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity:0; }
+    }
+
+    /* ─── MARQUEE STRIP ────────────────────────────────── */
+    .marquee-strip {
+      background: var(--deep-green); overflow: hidden;
+      padding: .9rem 0; border-top: 1px solid rgba(110,140,101,.15);
+    }
+    .marquee-track {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track span {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: .85rem; font-weight: 300; letter-spacing: .12em;
+      color: rgba(170,191,161,.6); padding: 0 3rem;
+    }
+    .marquee-track .dot {
+      font-style: normal; color: var(--sage);
+      font-size: .5rem; vertical-align: middle; padding: 0 .5rem 0 0;
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SHARED ───────────────────────────────────────── */
+    .section-pad { padding: 7rem 5rem; }
+    .eyebrow {
+      font-size: .62rem; font-weight: 300; letter-spacing: .38em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1.4rem; display: block;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.6rem); font-weight: 300; line-height: 1.15;
+      color: var(--dark);
+    }
+    .thin-rule { width: 52px; height: 1px; background: var(--warm-tan); margin: 1.6rem 0 2rem; }
+
+    /* fade animations */
+    .fade-up { opacity:0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .fade-up.in { opacity:1; transform: none; }
+
+    /* ─── SERVICES ─────────────────────────────────────── */
+    .services { background: var(--cream); }
+    .services-inner {
+      display: grid; grid-template-columns: 1fr 2.2fr; gap: 6rem; align-items: start;
+    }
+    .services-intro { position: sticky; top: 7rem; }
+    .services-intro p {
+      font-size: .85rem; line-height: 2.05; color: var(--text-muted); margin-top: .8rem;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+    }
+    .service-card {
+      background: var(--warm-white); padding: 2.8rem 2.4rem;
+      transition: background .35s, transform .35s;
+      cursor: default; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--sage); transform: scaleX(0); transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .service-card:hover { background: var(--pale-sage); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon { width: 44px; height: 44px; color: var(--sage); margin-bottom: 1.8rem; }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 400; color: var(--dark); margin-bottom: .8rem;
+    }
+    .service-desc { font-size: .8rem; line-height: 2; color: var(--text-muted); }
+
+    /* ─── GRASS DIVIDER ────────────────────────────────── */
+    .grass-divider {
+      display: block; width: 100%; height: 80px;
+      color: var(--warm-tan); overflow: visible;
+    }
+
+    /* ─── PORTFOLIO ────────────────────────────────────── */
+    .portfolio { background: var(--warm-white); }
+    .portfolio-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+    .portfolio-header .view-all {
+      font-size: .66rem; font-weight: 300; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; transition: color .3s;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .portfolio-header .view-all::after {
+      content: ''; display: block; width: 32px; height: 1px;
+      background: currentColor; transition: width .3s;
+    }
+    .portfolio-header .view-all:hover { color: var(--chocolate); }
+    .portfolio-header .view-all:hover::after { width: 52px; }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 60px;
+      gap: 4px;
+    }
+    .p-item { overflow: hidden; position: relative; }
+    .p-item:nth-child(1) { grid-column: 1/6;  grid-row: 1/9;  }
+    .p-item:nth-child(2) { grid-column: 6/13; grid-row: 1/6;  }
+    .p-item:nth-child(3) { grid-column: 6/9;  grid-row: 6/10; }
+    .p-item:nth-child(4) { grid-column: 9/13; grid-row: 6/10; }
+    .p-item:nth-child(5) { grid-column: 1/7;  grid-row: 9/13; }
+    .p-item:nth-child(6) { grid-column: 7/13; grid-row: 9/13; }
+    .p-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .75s cubic-bezier(.25,.46,.45,.94);
+      display: block;
+    }
+    .p-item:hover .p-img { transform: scale(1.06); }
+    .p-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(21,29,24,.72) 0%, transparent 45%);
+      opacity: 0; transition: opacity .4s;
+      display: flex; align-items: flex-end; padding: 1.4rem 1.6rem;
+    }
+    .p-item:hover .p-overlay { opacity: 1; }
+    .p-label {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1rem; font-weight: 300; color: rgba(251,248,243,.9);
+    }
+
+    /* placeholder gradients for portfolio images */
+    .pg1 { background: linear-gradient(162deg, #151D18 0%, #1F3025 25%, #2E4435 50%, #8B7355 80%, #C2A880 100%); }
+    .pg2 { background: linear-gradient(140deg, #2E4435 0%, #5A3826 40%, #8B7355 72%, #D2BAA0 100%); }
+    .pg3 { background: linear-gradient(170deg, #151D18 0%, #2E4435 50%, #6E8C65 100%); }
+    .pg4 { background: linear-gradient(148deg, #3C2016 0%, #5A3826 38%, #8B6050 65%, #C2A880 100%); }
+    .pg5 { background: linear-gradient(138deg, #1F3025 0%, #3A5240 40%, #7A8360 72%, #E0D2B8 100%); }
+    .pg6 { background: linear-gradient(90deg,  #151D18 0%, #1F3025 25%, #3A5240 50%, #2E4435 75%, #151D18 100%); }
+
+    /* ─── INSTAGRAM ────────────────────────────────────── */
+    .instagram { background: var(--cream); text-align: center; }
+    .ig-header { margin-bottom: 3rem; }
+    .ig-handle {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--chocolate); display: block; margin-bottom: .5rem;
+    }
+    /* Behold widget wrapper */
+    .ig-feed-wrap {
+      margin-bottom: 2.5rem;
+      /* Behold renders its own grid — these custom properties control its layout */
+      --behold-columns: 6;
+      --behold-gap: 4px;
+      --behold-border-radius: 0px;
+    }
+    /* ─── REEL (videos) ────────────────────────────────── */
+    .reel { background: var(--dark); }
+    .reel .section-title { color: var(--beige); }
+    .reel .eyebrow { color: var(--light-sage); }
+    .reel .thin-rule { background: var(--sage); }
+    .reel-header { margin-bottom: 3rem; }
+    .reel-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    }
+    .reel-item { aspect-ratio: 9/16; overflow: hidden; position: relative; }
+    .reel-item video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    /* Instagram skeleton — real photos while Behold loads */
+    .ig-skeleton {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px;
+      margin-bottom: 2.5rem;
+    }
+    .ig-skeleton-item {
+      aspect-ratio: 1/1; overflow: hidden;
+    }
+    .ig-skeleton-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .55s ease;
+    }
+    .ig-skeleton-item:hover img { transform: scale(1.07); }
+    .ig-follow-btn {
+      display: inline-flex; align-items: center; gap: 1rem;
+      font-size: .68rem; font-weight: 300; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--text); text-decoration: none; border: 1px solid var(--rule);
+      padding: .9rem 2.4rem; transition: background .3s, color .3s;
+    }
+    .ig-follow-btn:hover { background: var(--deep-green); color: var(--beige); border-color: var(--deep-green); }
+    .ig-setup-note {
+      display: inline-block; font-size: .7rem; color: var(--text-muted);
+      margin-top: 1.2rem; font-style: italic; letter-spacing: .06em;
+      background: rgba(110,140,101,.08); padding: .6rem 1.2rem; border-radius: 2px;
+    }
+
+    /* ─── CONTACT ──────────────────────────────────────── */
+    .contact {
+      background: var(--deep-green);
+      padding: 7rem 5rem;
+    }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 7rem; align-items: start;
+    }
+    .contact .eyebrow { color: var(--light-sage); }
+    .contact .section-title { color: var(--beige); }
+    .contact .thin-rule { background: var(--sage); }
+    .contact-info p {
+      font-size: .83rem; line-height: 2.05; color: rgba(239,229,214,.58); margin-bottom: 2.8rem;
+    }
+    .contact-detail {
+      font-size: .68rem; letter-spacing: .18em; color: var(--light-sage); margin-bottom: .6rem;
+    }
+
+    .contact-form { display: grid; gap: 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-bottom: 1px; }
+    .form-field {
+      border-bottom: 1px solid rgba(170,191,161,.22);
+      padding-bottom: 1px; background: transparent;
+    }
+    .form-field.span2 { grid-column: 1/-1; }
+    .form-field label {
+      display: block; font-size: .6rem; letter-spacing: .32em; text-transform: uppercase;
+      color: var(--light-sage); padding: 1.4rem 0 .3rem;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%; background: transparent; border: none; outline: none;
+      font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300;
+      color: var(--beige); padding: 0 0 1rem; -webkit-appearance: none; appearance: none;
+    }
+    .form-field textarea { resize: none; height: 90px; }
+    .form-field select option { background: var(--deep-green); color: var(--beige); }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(239,229,214,.25); }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-bottom-color: rgba(170,191,161,.6); }
+
+    .btn-submit {
+      margin-top: 2.4rem;
+      font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 300;
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--deep-green); background: var(--beige);
+      border: none; padding: 1.15rem 3rem; cursor: pointer;
+      transition: background .3s, letter-spacing .3s;
+    }
+    .btn-submit:hover { background: var(--pale-sage); letter-spacing: .38em; }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 2.6rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(110,140,101,.08);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--beige);
+    }
+    .footer-copy {
+      font-size: .62rem; letter-spacing: .1em; color: rgba(239,229,214,.28);
+    }
+    .footer-social { display: flex; gap: 2rem; }
+    .footer-social a {
+      font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(239,229,214,.38); text-decoration: none; transition: color .3s;
+    }
+    .footer-social a:hover { color: var(--light-sage); }
+
+    /* ─── MOBILE ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      #nav { padding: 1.4rem 1.8rem; }
+      .nav-links { display: none; flex-direction: column; gap: 1.5rem; position: absolute; top: 100%; left: 0; right: 0; background: rgba(251,248,243,.97); padding: 2rem 1.8rem; border-bottom: 1px solid var(--rule); }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: var(--text-muted) !important; font-size: .8rem; }
+      .nav-hamburger { display: flex; }
+      .section-pad { padding: 5rem 1.8rem; }
+      .hero-content { padding: 0 1.8rem 5rem; }
+      .hero-scroll { right: 1.8rem; }
+      .services-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-intro { position: static; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+      .p-item:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .ig-skeleton { grid-template-columns: repeat(3, 1fr); }
+      .ig-feed-wrap { --behold-columns: 3; }
+      .reel-grid { grid-template-columns: 1fr; }
+      .contact { padding: 5rem 1.8rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.2rem; text-align: center; padding: 2.4rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <img src="logo/logo-transparent.png" alt="D Darling Design" class="nav-logo-img">
+  </a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#instagram" onclick="closeMenu()">Journal</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Enquire</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <video class="hero-bg" autoplay muted loop playsinline poster="Images/PHOTO-2025-03-31-20-54-33.jpg">
+    <source src="Images/VIDEO-2025-03-31-20-54-44.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <!-- Botanical SVG illustration -->
+  <svg class="hero-botanical" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <filter id="blur1"><feGaussianBlur stdDeviation="0.6"/></filter>
+    </defs>
+
+    <!-- TALL GRASS STEMS -->
+    <g stroke="rgba(240,228,210,0.42)" stroke-width="0.9" fill="none" filter="url(#blur1)">
+      <path d="M 90 920 C 85 750 100 580 88 420 C 78 290 95 170 88 40"/>
+      <path d="M 160 920 C 172 760 152 600 166 445 C 178 310 162 195 170 55"/>
+      <path d="M 320 920 C 312 780 328 640 315 490 C 304 365 320 240 312 80"/>
+      <path d="M 480 920 C 495 770 474 628 490 478 C 503 352 486 228 494 70"/>
+      <path d="M 680 920 C 668 780 685 652 672 502 C 661 378 676 255 668 90"/>
+      <path d="M 920 920 C 935 775 915 638 930 488 C 942 360 924 240 932 78"/>
+      <path d="M 1120 920 C 1108 782 1124 650 1112 498 C 1102 372 1118 252 1110 82"/>
+      <path d="M 1300 920 C 1316 778 1294 640 1310 490 C 1324 362 1306 240 1314 72"/>
+    </g>
+
+    <!-- THINNER SECONDARY STEMS -->
+    <g stroke="rgba(240,228,210,0.28)" stroke-width="0.55" fill="none">
+      <path d="M 240 920 C 248 790 234 665 246 518 C 256 395 240 278 248 102"/>
+      <path d="M 570 920 C 558 800 572 678 560 530 C 550 406 564 290 556 114"/>
+      <path d="M 800 920 C 815 798 796 672 810 524 C 822 398 806 280 814 104"/>
+      <path d="M 1030 920 C 1018 802 1032 680 1020 532 C 1010 408 1024 290 1016 112"/>
+      <path d="M 1210 920 C 1225 800 1206 674 1220 526 C 1232 400 1214 280 1222 106"/>
+    </g>
+
+    <!-- LUNARIA PODS (honesty plant — oval + inner circle) -->
+    <g stroke="rgba(240,228,210,0.55)" stroke-width="0.8" fill="rgba(240,228,210,0.04)">
+      <!-- Pod on stem near x=88 -->
+      <ellipse cx="88" cy="40" rx="12" ry="16" transform="rotate(-8 88 40)"/>
+      <circle  cx="88" cy="40" r="5" fill="none"/>
+      <!-- Pod near x=170 -->
+      <ellipse cx="170" cy="55" rx="10" ry="14" transform="rotate(5 170 55)"/>
+      <circle  cx="170" cy="55" r="4.2" fill="none"/>
+      <!-- Pod near x=494 -->
+      <ellipse cx="494" cy="70" rx="13" ry="18" transform="rotate(-5 494 70)"/>
+      <circle  cx="494" cy="70" r="5.5" fill="none"/>
+      <!-- Pod near x=932 -->
+      <ellipse cx="932" cy="78" rx="11" ry="15" transform="rotate(6 932 78)"/>
+      <circle  cx="932" cy="78" r="4.5" fill="none"/>
+      <!-- Pod near x=1314 -->
+      <ellipse cx="1314" cy="72" rx="12" ry="16" transform="rotate(-4 1314 72)"/>
+      <circle  cx="1314" cy="72" r="4.8" fill="none"/>
+    </g>
+
+    <!-- PAMPAS PLUMES (cluster of wispy curved lines at stem tops) -->
+    <g stroke="rgba(240,228,210,0.3)" stroke-width="0.5" fill="none">
+      <!-- Plume at x~312 -->
+      <path d="M 312 80 C 305 55 298 38 290 22"/>
+      <path d="M 312 80 C 308 52 304 34 302 16"/>
+      <path d="M 312 80 C 312 50 312 30 312 10"/>
+      <path d="M 312 80 C 316 52 320 34 322 16"/>
+      <path d="M 312 80 C 319 55 326 38 334 22"/>
+      <path d="M 312 80 C 300 60 292 45 280 35"/>
+      <path d="M 312 80 C 324 60 332 45 344 35"/>
+
+      <!-- Plume at x~668 -->
+      <path d="M 668 90 C 661 65 654 48 646 32"/>
+      <path d="M 668 90 C 664 62 660 44 658 26"/>
+      <path d="M 668 90 C 668 60 668 40 668 20"/>
+      <path d="M 668 90 C 672 62 676 44 678 26"/>
+      <path d="M 668 90 C 675 65 682 48 690 32"/>
+      <path d="M 668 90 C 656 70 648 55 636 45"/>
+      <path d="M 668 90 C 680 70 688 55 700 45"/>
+
+      <!-- Plume at x~1110 -->
+      <path d="M 1110 82 C 1103 57 1096 40 1088 24"/>
+      <path d="M 1110 82 C 1106 54 1102 36 1100 18"/>
+      <path d="M 1110 82 C 1110 52 1110 32 1110 12"/>
+      <path d="M 1110 82 C 1114 54 1118 36 1120 18"/>
+      <path d="M 1110 82 C 1117 57 1124 40 1132 24"/>
+    </g>
+
+    <!-- SMALL LEAF BRANCHLETS along some stems -->
+    <g stroke="rgba(240,228,210,0.25)" stroke-width="0.6" fill="none">
+      <path d="M 160 400 C 148 392 140 382 136 370"/>
+      <path d="M 160 400 C 172 388 178 376 178 362"/>
+      <path d="M 480 350 C 468 340 460 328 458 314"/>
+      <path d="M 480 350 C 492 338 498 324 500 308"/>
+      <path d="M 920 420 C 908 410 900 396 898 380"/>
+      <path d="M 920 420 C 932 408 938 394 940 378"/>
+    </g>
+
+    <!-- FLOATING SEED PARTICLES -->
+    <g fill="rgba(240,228,210,0.35)">
+      <circle cx="220" cy="180" r="1.5"/>
+      <circle cx="445" cy="260" r="1.2"/>
+      <circle cx="720" cy="140" r="1.8"/>
+      <circle cx="860" cy="320" r="1.3"/>
+      <circle cx="1050" cy="200" r="1.6"/>
+      <circle cx="1180" cy="350" r="1.2"/>
+      <circle cx="360" cy="480" r="1"/>
+      <circle cx="640" cy="380" r="1.4"/>
+      <circle cx="1000" cy="440" r="1.1"/>
+      <circle cx="1240" cy="280" r="1.5"/>
+      <circle cx="130" cy="560" r="1.2"/>
+      <circle cx="770" cy="520" r="1.3"/>
+    </g>
+  </svg>
+
+  <div class="hero-content fade-up">
+    <span class="hero-eyebrow">Dried Floral Studio</span>
+    <h1 class="hero-title">
+      Timeless<br>
+      <em>botanical</em><br>
+      artistry
+    </h1>
+    <p class="hero-mission">
+      Timeless and everlasting dried floral artwork for homes, events, and commercial spaces.
+    </p>
+    <a href="#portfolio" class="hero-cta">View Our Work</a>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     MARQUEE STRIP
+═══════════════════════════════════════════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Dried Bouquets</span>
+    <span class="dot">✦</span>
+    <span>Shop Activations</span>
+    <span class="dot">✦</span>
+    <span>Home Décor</span>
+    <span class="dot">✦</span>
+    <span>Seasonal Wreaths</span>
+    <span class="dot">✦</span>
+    <span>Event Installations</span>
+    <span class="dot">✦</span>
+    <span>Bespoke Arrangements</span>
+    <span class="dot">✦</span>
+    <span>Interior Design</span>
+    <span class="dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span>Dried Bouquets</span>
+    <span class="dot">✦</span>
+    <span>Shop Activations</span>
+    <span class="dot">✦</span>
+    <span>Home Décor</span>
+    <span class="dot">✦</span>
+    <span>Seasonal Wreaths</span>
+    <span class="dot">✦</span>
+    <span>Event Installations</span>
+    <span class="dot">✦</span>
+    <span>Bespoke Arrangements</span>
+    <span class="dot">✦</span>
+    <span>Interior Design</span>
+    <span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════════════ -->
+<section class="services section-pad" id="services">
+  <div class="services-inner">
+    <div class="services-intro fade-up">
+      <span class="eyebrow">Our Offerings</span>
+      <h2 class="section-title">Crafted with intention</h2>
+      <div class="thin-rule"></div>
+      <p>
+        Each piece is designed to bring lasting warmth and natural beauty into your world — whether it's an intimate home installation, a sweeping event backdrop, or a seasonal wreath for your door.
+      </p>
+    </div>
+
+    <div class="services-grid stagger">
+      <!-- Dried Bouquets -->
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M 22 40 C 22 40 14 28 14 22"/>
+          <path d="M 22 40 C 22 40 30 28 30 22"/>
+          <path d="M 22 40 L 22 26"/>
+          <path d="M 14 22 C 10 18 10 12 14 10 C 16 9 18 10 19 12"/>
+          <path d="M 30 22 C 34 18 34 12 30 10 C 28 9 26 10 25 12"/>
+          <path d="M 22 26 C 22 22 20 16 22 12 C 24 16 24 22 22 26"/>
+          <ellipse cx="14" cy="9" rx="4" ry="5"/>
+          <ellipse cx="22" cy="8" rx="4.5" ry="5.5"/>
+          <ellipse cx="30" cy="9" rx="4" ry="5"/>
+          <path d="M 18 36 Q 22 34 26 36" stroke-width="1.2"/>
+        </svg>
+        <h3 class="service-name">Dried Bouquets</h3>
+        <p class="service-desc">Carefully composed arrangements of preserved botanicals — strawflowers, pampas, lunaria, and grasses — built to last a lifetime.</p>
+      </div>
+
+      <!-- Shop Activations -->
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M 6 40 Q 6 20 22 14 Q 38 20 38 40"/>
+          <path d="M 16 14 Q 14 6 18 2"/>
+          <path d="M 22 14 Q 22 6 22 2"/>
+          <path d="M 28 14 Q 30 6 26 2"/>
+          <circle cx="18" cy="1.5" r="2" fill="currentColor" opacity=".5"/>
+          <circle cx="22" cy="1.5" r="2.5" fill="currentColor" opacity=".6"/>
+          <circle cx="26" cy="1.5" r="2" fill="currentColor" opacity=".5"/>
+          <line x1="12" y1="26" x2="12" y2="38"/>
+          <line x1="32" y1="26" x2="32" y2="38"/>
+          <path d="M 12 26 Q 22 22 32 26"/>
+        </svg>
+        <h3 class="service-name">Shop Activations</h3>
+        <p class="service-desc">Statement installations and seasonal styling for retail spaces, pop-ups, and boutique storefronts that want to make an impression.</p>
+      </div>
+
+      <!-- Home Decor -->
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M 14 42 L 12 30 Q 10 26 15 24 L 29 24 Q 34 26 32 30 L 30 42 Z"/>
+          <path d="M 19 24 C 15 18 12 10 16 6"/>
+          <path d="M 22 24 C 22 18 22 10 22 4"/>
+          <path d="M 25 24 C 29 18 32 10 28 6"/>
+          <circle cx="16" cy="5" r="3" fill="none"/>
+          <ellipse cx="22" cy="3.5" rx="3.5" ry="4" fill="none"/>
+          <circle cx="28" cy="5" r="3" fill="none"/>
+          <path d="M 17 30 Q 22 28 27 30"/>
+        </svg>
+        <h3 class="service-name">Home Décor</h3>
+        <p class="service-desc">Custom dried arrangements for interior spaces — bespoke to your palette, room, and aesthetic. Lasting beauty without maintenance.</p>
+      </div>
+
+      <!-- Seasonal Wreaths -->
+      <div class="service-card fade-up">
+        <svg class="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <circle cx="22" cy="22" r="13"/>
+          <circle cx="22" cy="22" r="6"/>
+          <!-- Botanicals around ring -->
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(0   22 22)" fill="none"/>
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(60  22 22)" fill="none"/>
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(120 22 22)" fill="none"/>
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(180 22 22)" fill="none"/>
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(240 22 22)" fill="none"/>
+          <ellipse cx="22"    cy="9"    rx="2.5" ry="4"   transform="rotate(300 22 22)" fill="none"/>
+          <path d="M 22 22 Q 26 16 30 18" stroke-width=".8"/>
+          <path d="M 22 22 Q 16 18 14 22" stroke-width=".8"/>
+        </svg>
+        <h3 class="service-name">Seasonal Wreaths</h3>
+        <p class="service-desc">Hand-foraged and assembled wreaths for every season — earthy autumn tones, soft winter whites, and everything in between.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grass divider -->
+<div style="background:var(--warm-white); overflow:hidden; height:80px; position:relative;">
+  <svg class="grass-divider" viewBox="0 0 1400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;bottom:0;left:0;width:100%;height:100%;">
+    <g stroke="var(--warm-tan)" stroke-width="0.7" fill="none" opacity="0.5">
+      <path d="M 40 80 Q 38 55 42 30 Q 44 12 40 0"/>
+      <path d="M 95 80 Q 100 58 95 35 Q 92 16 96 2"/>
+      <path d="M 165 80 Q 162 60 166 38 Q 168 18 164 3"/>
+      <path d="M 240 80 Q 248 56 242 32 Q 238 13 244 1"/>
+      <path d="M 320 80 Q 315 58 320 36 Q 323 16 318 2"/>
+      <path d="M 415 80 Q 420 55 414 30 Q 410 12 416 0"/>
+      <path d="M 510 80 Q 506 58 511 34 Q 514 15 509 2"/>
+      <path d="M 600 80 Q 608 56 602 32 Q 598 14 604 1"/>
+      <path d="M 700 80 Q 695 58 700 35 Q 703 16 698 2"/>
+      <path d="M 800 80 Q 806 55 800 30 Q 796 12 802 0"/>
+      <path d="M 900 80 Q 895 58 900 35 Q 903 16 898 2"/>
+      <path d="M 1000 80 Q 1007 56 1001 32 Q 997 13 1003 1"/>
+      <path d="M 1090 80 Q 1085 58 1090 36 Q 1093 16 1088 2"/>
+      <path d="M 1180 80 Q 1188 55 1181 30 Q 1177 12 1183 0"/>
+      <path d="M 1270 80 Q 1265 58 1270 36 Q 1273 16 1268 2"/>
+      <path d="M 1360 80 Q 1368 56 1362 32 Q 1358 13 1364 1"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PORTFOLIO
+═══════════════════════════════════════════════════════ -->
+<section class="portfolio section-pad" id="portfolio">
+  <div class="portfolio-header fade-up">
+    <div>
+      <span class="eyebrow">Portfolio</span>
+      <h2 class="section-title">Recent work</h2>
+      <div class="thin-rule" style="margin-bottom:0"></div>
+    </div>
+    <a href="#contact" class="view-all">Commission a piece</a>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-33.jpg" alt="Lush dried bouquet arrangement" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Bespoke dried bouquet</span></div>
+    </div>
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-44(25).jpg" alt="Three dried bouquets on ladder shelf" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Bouquet collection, home styling</span></div>
+    </div>
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/Wreath brick wall.jpeg" alt="Dried wreath against brick wall" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Autumn wreath</span></div>
+    </div>
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-44(1).jpg" alt="Dried arrangement in terracotta vase" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Home installation</span></div>
+    </div>
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-44(28).jpg" alt="Wide dried botanical mantelpiece swag" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Mantelpiece installation</span></div>
+    </div>
+    <div class="p-item fade-up">
+      <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-42(30).jpg" alt="Wall installation with botanical arrangement" loading="lazy">
+      <div class="p-overlay"><span class="p-label">Shop activation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     REEL
+═══════════════════════════════════════════════════════ -->
+<section class="reel section-pad" id="reel">
+  <div class="reel-header fade-up">
+    <span class="eyebrow">In Motion</span>
+    <h2 class="section-title">The work, alive</h2>
+    <div class="thin-rule"></div>
+  </div>
+  <div class="reel-grid">
+    <div class="reel-item fade-up">
+      <video autoplay muted loop playsinline>
+        <source src="Images/VIDEO-2025-03-31-20-54-44(1).mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="reel-item fade-up">
+      <video autoplay muted loop playsinline>
+        <source src="Images/VIDEO-2025-03-31-20-54-44(2).mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="reel-item fade-up">
+      <video autoplay muted loop playsinline>
+        <source src="Images/VIDEO-2025-03-31-20-54-44(3).mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     INSTAGRAM
+═══════════════════════════════════════════════════════ -->
+<section class="instagram section-pad" id="instagram">
+  <div class="ig-header fade-up">
+    <span class="eyebrow" style="display:block;text-align:center">Journal &amp; Process</span>
+    <h2 class="section-title" style="margin-bottom:.6rem">Follow along</h2>
+    <span class="ig-handle">@ddarlingdesign</span>
+  </div>
+
+  <!--
+    ══ BEHOLD INSTAGRAM FEED ═══════════════════════════════
+    To activate the live Instagram feed:
+      1. Go to  https://behold.so  and create a free account
+      2. Connect your Instagram account (@ddarlingdesign)
+      3. Create a new widget — set columns to 6, gap to 4px
+      4. Copy your Widget ID from the embed code
+      5. Replace  PASTE_YOUR_WIDGET_ID_HERE  below with it
+         (it looks like: AbCdEfGhIjKl123456)
+      6. Delete the ig-skeleton div once the feed is live
+    ════════════════════════════════════════════════════════
+  -->
+
+  <!-- Photo grid shown until Behold live feed is configured -->
+  <div class="ig-skeleton fade-up" id="ig-skeleton">
+    <div class="ig-skeleton-item">
+      <img src="Images/PHOTO-2025-03-31-20-54-44(5).jpg" alt="Dried wreath" loading="lazy">
+    </div>
+    <div class="ig-skeleton-item">
+      <img src="Images/Dried Vase.jpeg" alt="Dried arrangement in vase" loading="lazy">
+    </div>
+    <div class="ig-skeleton-item">
+      <img src="Images/PHOTO-2025-03-31-20-54-44(15).jpg" alt="Bouquet in glass vase on shelf" loading="lazy">
+    </div>
+    <div class="ig-skeleton-item">
+      <img src="Images/PHOTO-2025-03-31-20-54-42(1).jpg" alt="Hanging dried floral ball" loading="lazy">
+    </div>
+    <div class="ig-skeleton-item">
+      <img src="Images/Autumn Wreath.jpeg" alt="Autumn wreath" loading="lazy">
+    </div>
+    <div class="ig-skeleton-item">
+      <img src="Images/Mantle Piece.jpeg" alt="Styled mantelpiece" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Behold live feed — replace the widget ID to activate -->
+  <div class="ig-feed-wrap fade-up">
+    <div id="behold-widget-PASTE_YOUR_WIDGET_ID_HERE"></div>
+  </div>
+
+  <a href="https://www.instagram.com/ddarlingdesign/" target="_blank" rel="noopener" class="ig-follow-btn fade-up">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <rect x="2" y="2" width="20" height="20" rx="5"/>
+      <circle cx="12" cy="12" r="4.5"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </svg>
+    Follow on Instagram
+  </a>
+  <span class="ig-setup-note" id="ig-setup-note">
+    Feed connects automatically once Behold is configured — see code comment above.
+  </span>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="fade-up">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 class="section-title">Let's create something lasting</h2>
+      <div class="thin-rule"></div>
+      <p>
+        Whether you're planning a wedding, refreshing your home, or looking for a unique retail experience — we'd love to hear about your vision.
+      </p>
+      <div class="contact-detail">info@ddarlingdesign.co.uk</div>
+      <div class="contact-detail">Chichester, West Sussex</div>
+      <div class="contact-detail">By appointment</div>
+      <div class="contact-detail" style="margin-top:1.4rem;">
+        <a href="https://ddarlingdesign.etsy.com" target="_blank" rel="noopener" style="color:var(--light-sage);text-decoration:none;letter-spacing:.18em;font-size:.68rem;">Shop on Etsy →</a>
+      </div>
+      <div class="contact-detail">
+        <a href="https://theleap.co/creator/ddarlingdesign" target="_blank" rel="noopener" style="color:var(--light-sage);text-decoration:none;letter-spacing:.18em;font-size:.68rem;">Enquiry form →</a>
+      </div>
+    </div>
+
+    <form class="contact-form fade-up" name="enquiry" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name" required>
+        </div>
+        <div class="form-field">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+61 4xx xxx xxx" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Select a service</option>
+            <option value="bouquet">Dried Bouquet</option>
+            <option value="activation">Shop Activation</option>
+            <option value="home">Home Décor Installation</option>
+            <option value="wreath">Seasonal Wreath</option>
+            <option value="event">Event / Wedding</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="date">Event / Delivery Date</label>
+          <input type="text" id="date" name="date" placeholder="DD / MM / YYYY">
+        </div>
+      </div>
+
+      <div class="form-field span2" style="margin-top:1px">
+        <label for="message">Tell me about your vision</label>
+        <textarea id="message" name="message" placeholder="Describe your space, palette, or occasion…"></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer>
+  <a href="#" class="footer-logo">
+    <img src="logo/logo-transparent.png" alt="D Darling Design" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.7;">
+  </a>
+  <span class="footer-copy">© 2025 D Darling Design. Chichester, UK.</span>
+  <nav class="footer-social" aria-label="Social links">
+    <a href="https://instagram.com/ddarlingdesign" target="_blank" rel="noopener">Instagram</a>
+    <a href="#contact">Enquire</a>
+  </nav>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script>
+  /* ── Nav scroll behaviour ─────────────────────────── */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Hamburger menu ───────────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  function closeMenu() { navLinks.classList.remove('open'); }
+
+  /* ── Parallax on hero botanical ───────────────────── */
+  const heroBotanical = document.querySelector('.hero-botanical');
+  const heroSection   = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight && heroBotanical) {
+      heroBotanical.style.transform = `translateY(${scrollY * 0.22}px)`;
+    }
+  }, { passive: true });
+
+  /* ── Intersection Observer — fade up ─────────────── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach((el, i) => {
+    // Stagger siblings in the same grid
+    const parent = el.parentElement;
+    if (parent && (parent.classList.contains('services-grid') || parent.classList.contains('portfolio-grid') || parent.classList.contains('ig-grid'))) {
+      const siblings = [...parent.querySelectorAll('.fade-up')];
+      const idx = siblings.indexOf(el);
+      el.style.transitionDelay = `${idx * 0.08}s`;
+    }
+    io.observe(el);
+  });
+
+  /* ── Behold widget — hide skeleton once loaded ────── */
+  (function() {
+    var script = document.createElement('script');
+    script.type = 'module';
+    script.src = 'https://w.behold.so/widget.js';
+    script.onload = function() {
+      // Give the widget a moment to render, then hide skeleton + setup note
+      setTimeout(function() {
+        var skeleton = document.getElementById('ig-skeleton');
+        var note = document.getElementById('ig-setup-note');
+        if (skeleton) skeleton.style.display = 'none';
+        if (note) note.style.display = 'none';
+      }, 1200);
+    };
+    document.head.appendChild(script);
+  })();
+
+  /* ── Form submit (placeholder) ────────────────────── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Sent — Thank you';
+    btn.disabled = true;
+    btn.style.background = 'var(--pale-sage)';
+    btn.style.color = 'var(--deep-green)';
+  }
+</script>
+</body>
+</html>
