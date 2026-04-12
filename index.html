@@ -280,6 +280,76 @@
     .pg5 { background: linear-gradient(138deg, #1F3025 0%, #3A5240 40%, #7A8360 72%, #E0D2B8 100%); }
     .pg6 { background: linear-gradient(90deg,  #151D18 0%, #1F3025 25%, #3A5240 50%, #2E4435 75%, #151D18 100%); }
 
+    /* ─── TESTIMONIALS ─────────────────────────────────── */
+    .testimonials { background: var(--cream); overflow: hidden; }
+    .testimonial-feature {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      margin-bottom: 6px;
+    }
+    .testimonial-feature-img {
+      position: relative; height: 70vh; min-height: 480px; overflow: hidden;
+    }
+    .testimonial-feature-img img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+      transition: transform .9s ease;
+    }
+    .testimonial-feature-img:hover img { transform: scale(1.04); }
+    .testimonial-feature-text {
+      background: var(--deep-green);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem;
+    }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem); font-weight: 300; line-height: 1.55;
+      color: var(--beige); margin-bottom: 2.4rem; position: relative;
+    }
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 6rem; line-height: 0; position: absolute;
+      top: 1.2rem; left: -1.8rem;
+      color: rgba(170,191,161,.2);
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .testimonial-attribution { display: flex; flex-direction: column; gap: .4rem; }
+    .testimonial-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; color: var(--light-sage);
+      letter-spacing: .08em;
+    }
+    .testimonial-detail {
+      font-size: .64rem; font-weight: 300; letter-spacing: .28em;
+      text-transform: uppercase; color: rgba(170,191,161,.5);
+    }
+    .testimonial-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    }
+    .testimonial-grid-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .testimonial-grid-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .75s ease;
+    }
+    .testimonial-grid-item:hover img { transform: scale(1.05); }
+    .testimonial-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.4rem 1.6rem;
+      background: linear-gradient(to top, rgba(21,29,24,.75) 0%, transparent 100%);
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: .9rem; color: rgba(251,248,243,.85);
+      opacity: 0; transition: opacity .4s;
+    }
+    .testimonial-grid-item:hover .testimonial-caption { opacity: 1; }
+    @media (max-width: 900px) {
+      .testimonial-feature { grid-template-columns: 1fr; }
+      .testimonial-feature-img { height: 55vw; min-height: 280px; }
+      .testimonial-feature-text { padding: 3rem 1.8rem; }
+      .testimonial-quote::before { left: 0; top: .8rem; }
+      .testimonial-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     /* ─── INSTAGRAM ────────────────────────────────────── */
     .instagram { background: var(--cream); text-align: center; }
     .ig-header { margin-bottom: 3rem; }
@@ -450,6 +520,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#services" onclick="closeMenu()">Services</a></li>
     <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#testimonials" onclick="closeMenu()">Weddings</a></li>
     <li><a href="#instagram" onclick="closeMenu()">Journal</a></li>
     <li><a href="#contact" onclick="closeMenu()">Enquire</a></li>
   </ul>
@@ -771,6 +842,53 @@
     <div class="p-item fade-up">
       <img class="p-img" src="Images/PHOTO-2025-03-31-20-54-42(30).jpg" alt="Wall installation with botanical arrangement" loading="lazy">
       <div class="p-overlay"><span class="p-label">Shop activation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════════════ -->
+<section class="testimonials section-pad" id="testimonials">
+  <div class="fade-up" style="margin-bottom:3.5rem;">
+    <span class="eyebrow">Real Weddings</span>
+    <h2 class="section-title">Jack &amp; Jess</h2>
+    <div class="thin-rule"></div>
+  </div>
+
+  <!-- Feature: full ceremony shot + quote -->
+  <div class="testimonial-feature fade-up">
+    <div class="testimonial-feature-img">
+      <img src="testimonial/Jack and Jess/J&J Sargant Wedding - -58.jpg"
+           alt="Dried floral ceremony installations, Jack & Jess wedding">
+    </div>
+    <div class="testimonial-feature-text">
+      <p class="testimonial-quote">
+        D Darling Design brought our vision to life in the most beautiful way. The dried florals were breathtaking — wild, romantic, and completely timeless. Every guest couldn't stop talking about them.
+      </p>
+      <div class="testimonial-attribution">
+        <span class="testimonial-name">Jess &amp; Jack Sargant</span>
+        <span class="testimonial-detail">October 2025 &nbsp;·&nbsp; Chichester</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three-up photo grid -->
+  <div class="testimonial-grid">
+    <div class="testimonial-grid-item fade-up">
+      <img src="testimonial/Jack and Jess/J&J Sargant Wedding - -44.jpg"
+           alt="Bridal bouquet, Jack & Jess wedding" loading="lazy">
+      <div class="testimonial-caption">Bridal bouquet</div>
+    </div>
+    <div class="testimonial-grid-item fade-up">
+      <img src="testimonial/Jack and Jess/J&J Sargant Wedding - -45.jpg"
+           alt="Bouquet detail, Jack & Jess wedding" loading="lazy">
+      <div class="testimonial-caption">Autumn botanicals</div>
+    </div>
+    <div class="testimonial-grid-item fade-up">
+      <img src="testimonial/Jack and Jess/J&J Sargant Wedding - -314.jpg"
+           alt="Top table installation, Jack & Jess wedding" loading="lazy">
+      <div class="testimonial-caption">Top table installation</div>
     </div>
   </div>
 </section>
